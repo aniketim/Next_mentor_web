@@ -101,7 +101,7 @@
 
 /* Dark theme – from darkTheme.colors */
 .dark {
-  --background: #000000;
+  --background: #18181b;
   --foreground: #ffffff;
   --card: #1c1c1e;
   --card-foreground: #ffffff;
@@ -148,12 +148,17 @@
   * {
     @apply outline-ring/50;
   }
-  /* So Tailwind's font-sans uses Geist (layout sets --font-geist-sans on body) */
+  /* Font variables on html so font-sans resolves (html doesn't inherit from body) */
+  html {
+    --font-sans: var(--font-inter);
+    @apply font-sans;
+  }
   body {
-    --font-sans: var(--font-geist-sans);
     @apply bg-background text-foreground;
   }
-  html {
-    @apply font-sans;
+  html,
+  body {
+    width: 100%;
+    min-height: 100%;
   }
 }
